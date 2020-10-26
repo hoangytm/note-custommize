@@ -25,6 +25,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.Instant;
+import java.util.Calendar;
 
 import static com.programming.hoangpn.note.utils.Constant.ACTIVE;
 
@@ -77,7 +78,7 @@ public class AuthService {
             UserToken userToken = UserToken.builder()
                     .toKen(token)
                     .userName(loginRequest.getUsername())
-                    .createTime(Date.valueOf(""))
+                    .createTime(new java.sql.Date(Calendar.getInstance().getTime().getTime()))
                     .ip(ip)
                     .device(CommonService.getDevice(request))
                     .browser(CommonService.getBrowser(request))

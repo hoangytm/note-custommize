@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.UUID;
 
 @Service
@@ -21,8 +22,7 @@ public class RefreshTokenService {
     public RefreshToken generateRefreshToken() throws BusinessException {
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(UUID.randomUUID().toString());
-        // todo change String
-        refreshToken.setCreateDate(Date.valueOf(""));
+        refreshToken.setCreateDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 //        try {
 //            RefreshToken refreshToken1 = refreshTokenRepository.save(refreshToken);
 //        } catch (Exception e) {
