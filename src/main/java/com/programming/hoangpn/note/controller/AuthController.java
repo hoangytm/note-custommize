@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 @RestController
@@ -22,17 +23,14 @@ public class AuthController {
     private AuthService authService;
     @Autowired
     private RefreshTokenService refreshTokenService;
+
     @Autowired
 
     @GetMapping
     public String test() {
-//        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-//                .currentRequestAttributes())
-//                .getRequest();
-//        String ip = getClientIpAddr(request);
-//        log.info("client ip; " + ip);
         return "tuna";
     }
+
     @PostMapping("/login")
     public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);

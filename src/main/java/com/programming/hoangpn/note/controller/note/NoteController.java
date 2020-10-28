@@ -4,9 +4,7 @@ import com.programming.hoangpn.note.model.ApiResponse;
 import com.programming.hoangpn.note.model.note.Note;
 import com.programming.hoangpn.note.service.Note.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,26 @@ public class NoteController {
                 .code(200)
                 .message("success")
                 .data(notes)
+                .build();
+    }
+
+    @PostMapping
+    public ApiResponse creeate(@RequestBody Note note) {
+        Note notes = noteService.create(note);
+        return ApiResponse.builder()
+                .code(200)
+                .message("success")
+                .data(notes)
+                .build();
+    }
+
+    @DeleteMapping
+    public ApiResponse creeate(@RequestBody String id) {
+        noteService.delete(id);
+        return ApiResponse.builder()
+                .code(200)
+                .message("success")
+                .data(id)
                 .build();
     }
 }

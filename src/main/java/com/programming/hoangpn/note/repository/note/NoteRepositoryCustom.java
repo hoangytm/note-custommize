@@ -8,6 +8,6 @@ import java.util.List;
  * @author PhanHoang
  * 10/26/2020
  */
-public interface NoteRepositoryCustom {
+public interface NoteRepositoryCustom{
     List<Note> search(Note note);
 }
